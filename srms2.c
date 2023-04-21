@@ -28,16 +28,12 @@ int validate_usn(stud*);
 int main()
 {
 	fp=fopen("student.dat","a+");
-	//fread(first,sizeof(stud),1,fp);
 	fseek(fp,0,SEEK_SET);
 	int ch,rollno,flag=0;
 	stud s;
 	
-	//while(1)
 	do
 	{
-	    //system("cls");
-		//fflush(stdin);
 		printf("\n-----MENU-----\n");
 		printf("\n1.create a new record\n");
 		printf("2.display all records\n");
@@ -48,15 +44,12 @@ int main()
 		printf("enter your choice\n");
 		fflush(stdin);
 		scanf("%d",&ch);
-		//fflush(stdin);
 		switch(ch)
 		{
-			case 1 : //fflush(stdin);
-					 create();
-					 break;
-			case 2 :
-					 display_all();
-					 break;
+			case 1 :  create();
+				  break;
+			case 2 : display_all();
+				 break;
 			case 3 : flag=0;
 			         printf("enter the roll number \n");
 					 fflush(stdin);
@@ -105,10 +98,7 @@ void create()
 		fseek(fp,0,SEEK_END);
 		fwrite(s,sizeof(stud),1,fp);
 	}
-	//fseek(fp,0,SEEK_END);
-	//fwrite(s,sizeof(stud),1,fp);
 	fclose(fp);
-	//getch();
 }
 
 int validate_rollno(stud *sp)
@@ -182,10 +172,7 @@ stud* read()
     fflush(stdin);
     //scanf("%c",&temp);
     scanf("%[^\n]s",s->name);
-    //gets(s->name);
-    //s->name[i]='\0';
     printf("rollno : \n");
-    //fflush(stdin);
     scanf("%d",&s->rollno);
     printf("usn : \n");
     fflush(stdin);
@@ -201,7 +188,6 @@ stud* read()
         fflush(stdin);
 		scanf("%d",&s->maths);
         flag=1;
-        //fflush(stdin);
     }while(s->maths>100);
     flag=0;
     do
@@ -292,7 +278,6 @@ void display_all()
 void display_one(stud *s)
 {
 	int i;
-    //printf("\n the student details are : \n");
     int namelen=strlen(s->name);
     printf("%s",s->name);
     for(i=0;i<24-namelen;i++)
@@ -314,7 +299,6 @@ void modify()
 {
     int rollno,flag=0;
     stud s;
-    //stud new;
 	printf("enter the roll number :\n");
 	scanf("%d",&rollno);
 	fp=fopen("student.dat","a+");
@@ -339,9 +323,7 @@ void modify()
     {
         printf("RECORD DOES NOT EXIST\n");
     }
-	//rewind(fp);
 	rewind(fp2);
-	//fflush(fp);
 	fp=fopen("student.dat","w");
 	while(fread(&s,sizeof(stud),1,fp2))
 	{
